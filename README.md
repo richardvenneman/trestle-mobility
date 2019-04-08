@@ -6,9 +6,9 @@
 
 ## Features / problems
 
-- [ ] Manage Mobility translations with a tabbed interface in trestle
-- [ ] Supports Postgres container back-end
-- [ ] Probably works with other back-ends but has not been tested
+- Manage Mobility translations with a tabbed interface in trestle
+- Supports Postgres container back-end
+- Probably works with other back-ends but has not been tested
 
 ## Usage
 
@@ -25,6 +25,18 @@ Trestle.resource(:posts) do
   end
 end
 ```
+
+### Specifying locales
+
+By default Trestle Mobility uses `I18n.available_locales` to generate the form fields, but you can specify this on a per-field basis:
+
+```ruby
+mobility_text_field :title, locales: %w(nl de fr)
+```
+
+Quoting from Mobility's README:
+
+> (Note however that Mobility will complain if you have I18n.enforce_available_locales set to true and you try accessing a locale not present in I18n.available_locales; set it to false if you want to allow any locale.)
 
 ## Installation
 
