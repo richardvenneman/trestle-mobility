@@ -14,7 +14,7 @@
 
 ## Usage
 
-Trestle Mobility requires you to enable [Mobility's `locale_accessors` plugin](https://github.com/shioyama/mobility#getset) to be enabled.
+Trestle Mobility requires you to enable [Mobility's `locale_accessors` plugin](https://github.com/shioyama/mobility#getset).
 
 Assuming you've setup your models with Mobility's `translates` directives, you can use the `mobility_text_field` and `mobility_text_area` field types:
 
@@ -36,7 +36,7 @@ By default Trestle Mobility uses `I18n.available_locales` to generate the form f
 mobility_text_field :title, locales: %w(nl de fr)
 ```
 
-Quoting from Mobility's README:
+Quoting Mobility's README:
 
 > (Note however that Mobility will complain if you have I18n.enforce_available_locales set to true and you try accessing a locale not present in I18n.available_locales; set it to false if you want to allow any locale.)
 
