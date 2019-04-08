@@ -10,7 +10,7 @@
 - Supports Postgres container back-end
 - Probably works with other back-ends but has not been tested
 
-![Trestle Mobility screenshot](/screenshot.png?raw=true "Trestle Mobility screenshot")
+<img src="/screenshot.png?raw=true" width="484" height="315" alt="Trestle Mobility screenshot" />
 
 ## Usage
 
