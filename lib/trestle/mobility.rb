@@ -1,8 +1,4 @@
+require "emoji_flag"
+require "trestle"
 require "trestle/mobility/version"
-
-module Trestle
-  module Mobility
-    class Error < StandardError; end
-    # Your code goes here...
-  end
-end
+require "trestle/mobility/engine" if defined?(Rails)

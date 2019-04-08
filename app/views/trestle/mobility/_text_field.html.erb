@@ -1,0 +1,19 @@
+<div>
+  <ul class="nav nav-tabs" role="tablist">
+    <% locales.each.with_index do |locale, index| %>
+      <li role="presentation"<%= ' class=active' if index.zero? %>>
+        <a href="#<%= "#{field_name}_#{locale}" %>" aria-controls="<%= locale %>" role="tab" data-toggle="tab"><%= EmojiFlag.new(locale) %></a>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="main-content">
+    <div class="tab-content">
+      <% locales.each.with_index do |locale, index| %>
+        <div role="tabpanel" class="tab-pane<%= " active" if index.zero? %>" id="<%= "#{field_name}_#{locale}" %>">
+          <%= form.text_field "#{field_name}_#{locale}" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

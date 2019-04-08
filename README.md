@@ -1,35 +1,41 @@
-# Trestle::Mobility
+# Trestle Mobility Integration (trestle-mobility)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/trestle/mobility`. To experiment with that code, run `bin/console` for an interactive prompt.
+> [Mobility](https://github.com/shioyama/mobility) integration plugin for the [Trestle admin framework](https://trestle.io)
 
-TODO: Delete this and the text above, and describe your gem
+[![Gem](https://img.shields.io/gem/v/trestle-mobility.svg)](https://rubygems.org/gems/trestle-mobility)
+
+## Features / problems
+
+- [ ] Manage Mobility translations with a tabbed interface in trestle
+- [ ] Supports Postgres container back-end
+- [ ] Probably works with other back-ends but has not been tested
+
+## Usage
+
+Trestle Mobility requires you to enable [Mobility's `locale_accessors` plugin](https://github.com/shioyama/mobility#getset) to be enabled.
+
+Assuming you've setup your models with Mobility's `translates` directives, you can use the `mobility_text_field` and `mobility_text_area` field types:
+
+```ruby
+Trestle.resource(:posts) do
+  form do |user|
+    mobility_text_field :title
+    mobility_text_field :subtitle
+    mobility_text_area :content
+  end
+end
+```
 
 ## Installation
 
-Add this line to your application's Gemfile:
+These instructions assume you have a working Trestle application. To integrate trestle-mobility, first add it to your application's Gemfile:
 
 ```ruby
 gem 'trestle-mobility'
 ```
 
-And then execute:
+Run `bundle install`, and then restart your Rails server.
 
-    $ bundle
+## License
 
-Or install it yourself as:
-
-    $ gem install trestle-mobility
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/trestle-mobility.
+The gem is available as open source under the terms of the [Blue Oak Model License](https://blueoakcouncil.org/license/1.0.0).
