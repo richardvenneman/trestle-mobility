@@ -11,7 +11,7 @@
     <div class="tab-content">
       <% locales.each.with_index do |locale, index| %>
         <div role="tabpanel" class="tab-pane<%= " active" if index.zero? %>" id="<%= "#{field_name}_#{locale}" %>">
-          <%= form.text_area "#{field_name}_#{locale}" %>
+          <%= form.text_area "#{field_name}_#{locale}", rows: rows %>
         </div>
       <% end %>
     </div>

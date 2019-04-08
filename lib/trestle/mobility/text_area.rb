@@ -3,10 +3,11 @@ module Trestle
     class TextArea < Trestle::Form::Field
       def field
         instance = builder.object
-        locales = instance.translations.keys
+        locales = I18n.available_locales.sort
+        rows = options[:rows] || 5
 
         @template.render partial: "trestle/mobility/text_area",
-                         locals: { field_name: name, locales: locales }
+                         locals: { field_name: name, locales: locales, rows: rows }
       end
     end
   end
