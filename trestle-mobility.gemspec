@@ -8,6 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Trestle::Mobility::VERSION
   spec.authors       = ["Richard Venneman"]
   spec.email         = ["richardvenneman@me.com"]
+  spec.license       = "Blue Oak Model License"
 
   spec.summary       = %q{Mobility integration plugin for the Trestle admin framework}
   spec.description   = %q{Mobility integration plugin for the Trestle admin framework}
