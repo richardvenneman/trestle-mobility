@@ -1,5 +1,5 @@
 <div class="input-group mobility" data-active="<%= locales.first %>">
-  <div class="input-group-btn mobility-input-group">
+  <div class="input-group-btn">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="mobility-active"><%= "#{EmojiFlag.new(locales.first)} #{locales.first.upcase}" %></span> <span class="caret"></span>
     </button>
@@ -10,6 +10,6 @@
     </ul>
   </div>
   <% locales.each.with_index do |locale, index| %>
-    <%= form.raw_text_field "#{field_name}_#{locale}", class: "form-control mobility-field", placeholder: "#{field_name.to_s.humanize} (#{locale.upcase})", data: { locale: locale } %>
+    <%= form.raw_text_field "#{field_name}_#{locale}", class: "form-control mobility-field#{index > 0 ? ' hidden' : ''}", placeholder: "#{field_name.to_s.humanize} (#{locale.upcase})", data: { locale: locale } %>
   <% end %>
 </div>

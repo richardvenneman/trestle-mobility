@@ -9,7 +9,6 @@ Trestle.ready(function() {
     var element = $(element);
     var activeLocale = element.data('active');
     var button = element.find('.mobility-active');
-    var inputGroup = element.find('.mobility-input-group');
     var inputFields = element.find('.mobility-field');
     var dropdownItems = element.find('.dropdown-item');
 

@@ -1,17 +1,13 @@
-<div>
-  <ul class="nav nav-tabs" role="tablist">
-    <% locales.each.with_index do |locale, index| %>
-      <li role="presentation"<%= ' class=active' if index.zero? %>>
-        <a href="#<%= "#{field_name}_#{locale}" %>" aria-controls="<%= locale %>" role="tab" data-toggle="tab"><%= EmojiFlag.new(locale) %></a>
-      </li>
+<div class="input-group mobility" data-active="<%= locales.first %>">
+  <button type="button" class="btn btn-default dropdown-toggle input-group-addon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="mobility-active"><%= "#{EmojiFlag.new(locales.first)} #{locales.first.upcase}" %></span> <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <% locales.each do |locale| %>
+      <li><a href="#<%= "#{field_name}_#{locale}" %>" class="dropdown-item" data-locale="<%= locale %>"><%= "#{EmojiFlag.new(locale)} #{locale.upcase}" %></a></li>
     <% end %>
   </ul>
-
-  <div class="tab-content">
-    <% locales.each.with_index do |locale, index| %>
-      <div role="tabpanel" class="tab-pane<%= " active" if index.zero? %>" id="<%= "#{field_name}_#{locale}" %>">
-        <%= form.text_area "#{field_name}_#{locale}", label: false, placeholder: "#{field_name.capitalize} (#{locale.upcase})", rows: rows %>
-      </div>
-    <% end %>
-  </div>
+  <% locales.each.with_index do |locale, index| %>
+    <%= form.raw_text_area "#{field_name}_#{locale}", class: "form-control mobility-field#{index > 0 ? ' hidden' : ''}", placeholder: "#{field_name.to_s.humanize} (#{locale.upcase})", rows: rows, data: { locale: locale } %>
+  <% end %>
 </div>
