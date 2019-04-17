@@ -10,7 +10,7 @@
 - Supports Postgres container back-end
 - Probably works with other back-ends but has not been tested
 
-<img src="/screenshot.png?raw=true" width="484" height="315" alt="Trestle Mobility screenshot" />
+<img src="/screenshot.png?raw=true" width="529" height="242" alt="Trestle Mobility screenshot" />
 
 ## Usage
 
@@ -39,6 +39,22 @@ mobility_text_field :title, locales: %w(nl de fr)
 Quoting Mobility's README:
 
 > (Note however that Mobility will complain if you have I18n.enforce_available_locales set to true and you try accessing a locale not present in I18n.available_locales; set it to false if you want to allow any locale.)
+
+### Default language selection
+
+Trestle Mobility allows you to specify the language that is selected by default. This is possible on an application-wide basis but also per field.
+
+To set the default language that should be selected for all fields, add the following line to your Trestle initializer:
+
+```ruby
+config.mobility.selected = "nl"
+```
+
+Or specify it per field:
+
+```ruby
+mobility_text_field :subtitle, selected: "nl"
+```
 
 ## Installation
 
