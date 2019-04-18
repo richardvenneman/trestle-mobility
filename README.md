@@ -6,8 +6,8 @@
 
 ## Features / problems
 
-- Manage Mobility translations with a tabbed interface in trestle
-- Supports Postgres container back-end
+- Manage Mobility translations with a space-efficient dropdown interface in Trestle
+- Developed for usage with Mobility's Postgres container back-end
 - Probably works with other back-ends but has not been tested
 
 <img src="/screenshot.png?raw=true" width="529" height="242" alt="Trestle Mobility screenshot" />
