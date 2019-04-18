@@ -65,7 +65,3 @@ gem 'trestle-mobility'
 ```
 
 Run `bundle install`, and then restart your Rails server.
-
-## License
-
-The gem is available as open source under the terms of the [Blue Oak Model License](https://blueoakcouncil.org/license/1.0.0).
