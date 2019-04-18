@@ -20,7 +20,7 @@ Assuming you've setup your models with Mobility's `translates` directives, you c
 
 ```ruby
 Trestle.resource(:posts) do
-  form do |user|
+  form do |post|
     mobility_text_field :title
     mobility_text_field :subtitle
     mobility_text_area :content
