@@ -1,6 +1,6 @@
-Trestle.ready(function() {
+Trestle.init(function(e, root) {
   function init() {
-    $('.mobility').each(function() {
+    $(root).find('.mobility').each(function() {
       new Mobility(this);
     })
   }
