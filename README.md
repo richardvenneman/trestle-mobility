@@ -16,7 +16,7 @@
 
 Trestle Mobility requires you to enable [Mobility's `locale_accessors` plugin](https://github.com/shioyama/mobility#getset).
 
-Assuming you've setup your models with Mobility's `translates` directives, you can use the `mobility_text_field` and `mobility_text_area` field types:
+Assuming you've setup your models with Mobility's `translates` directives, you can use the `mobility_text_field`, `mobility_text_area` and `mobility_check_box` field types:
 
 ```ruby
 Trestle.resource(:posts) do
@@ -24,6 +24,7 @@ Trestle.resource(:posts) do
     mobility_text_field :title
     mobility_text_field :subtitle
     mobility_text_area :content
+    mobility_check_box :published
   end
 end
 ```
