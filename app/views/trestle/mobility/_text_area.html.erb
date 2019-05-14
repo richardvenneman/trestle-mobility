@@ -1,13 +1,15 @@
-<div class="input-group mobility" data-active="<%= selected %>">
-  <button type="button" class="btn btn-default dropdown-toggle input-group-addon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="mobility-active"><%= "#{EmojiFlag.new(selected)} #{selected.upcase}" %></span> <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <% locales.each do |locale| %>
-      <li><a href="#<%= "#{field_name}_#{locale}" %>" class="dropdown-item" data-locale="<%= locale %>"><%= "#{EmojiFlag.new(locale)} #{locale.upcase}" %></a></li>
+<div class="form-group">
+  <div class="input-group mobility" data-active="<%= selected %>">
+    <button type="button" class="btn btn-default dropdown-toggle input-group-addon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="mobility-active"><%= "#{EmojiFlag.new(selected)} #{selected.upcase}" %></span> <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <% locales.each do |locale| %>
+        <li><a href="#<%= "#{field_name}_#{locale}" %>" class="dropdown-item" data-locale="<%= locale %>"><%= "#{EmojiFlag.new(locale)} #{locale.upcase}" %></a></li>
+      <% end %>
+    </ul>
+    <% locales.each do |locale, index| %>
+      <%= form.raw_text_area "#{field_name}_#{locale}", class: "form-control mobility-field#{locale == selected ? '' : ' hidden'}", placeholder: "#{field_name.to_s.humanize} (#{locale.upcase})", rows: rows, data: { locale: locale } %>
     <% end %>
-  </ul>
-  <% locales.each do |locale, index| %>
-    <%= form.raw_text_area "#{field_name}_#{locale}", class: "form-control mobility-field#{locale == selected ? '' : ' hidden'}", placeholder: "#{field_name.to_s.humanize} (#{locale.upcase})", rows: rows, data: { locale: locale } %>
-  <% end %>
+  </div>
 </div>
