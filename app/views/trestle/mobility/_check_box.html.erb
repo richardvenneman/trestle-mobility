@@ -14,7 +14,7 @@
       <%=
         content_tag(:div, "#{field_name.to_s.humanize} (#{locale.upcase})", { class: "form-control mobility-checkbox mobility-field#{locale == selected ? '' : ' hidden'}", data: { locale: locale } }) do
           form.raw_check_box("#{field_name}_#{locale}", { class: "mobility-checkbox__input" }, "1", "0") +
-          form.label("#{field_name}_#{locale}", "#{field_name.to_s.humanize} (#{locale.upcase})", class: "mobility-checkbox__label")
+          form.label("#{field_name}_#{locale}", "#{label} (#{locale.upcase})", class: "mobility-checkbox__label")
         end
       %>
     <% end %>

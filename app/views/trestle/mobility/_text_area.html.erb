@@ -9,7 +9,7 @@
       <% end %>
     </ul>
     <% locales.each do |locale, index| %>
-      <%= form.raw_text_area "#{field_name}_#{locale}", class: "form-control mobility-field#{locale == selected ? '' : ' hidden'}", placeholder: "#{field_name.to_s.humanize} (#{locale.upcase})", rows: rows, data: { locale: locale } %>
+      <%= form.raw_text_area "#{field_name}_#{locale}", class: "form-control mobility-field#{locale == selected ? '' : ' hidden'}", placeholder: "#{label} (#{locale.upcase})", rows: rows, data: { locale: locale } %>
     <% end %>
   </div>
 </div>
