@@ -41,11 +41,11 @@ Trestle.init(function(e, root) {
       }
 
       if (deeplTranslationAction) {
-        toggleDeepl(element);
+        presentDeepl(element);
       }
     }
 
-    function toggleDeepl (element) {
+    function presentDeepl (element) {
       var element = $(element);
 
       if (deeplTranslationAction) {
@@ -64,6 +64,10 @@ Trestle.init(function(e, root) {
       }
     }
 
+    function dismissDeepl () {
+      deeplTranslationAction.removeClass('mobility__deepl--actionable')
+    }
+
     function deeplTranslate (locale) {
       var path = deeplTranslationAction.data('remote-path');
       var data = {
@@ -80,12 +84,13 @@ Trestle.init(function(e, root) {
         deeplTranslationAction.removeClass('mobility__deepl--active');
       }).done(function(text) {
         getActiveField().val(text);
+        dismissDeepl();
       });
     }
 
     if (deeplTranslationAction) {
       inputFields.on('change', function() {
-        toggleDeepl($(this).closest('.mobility'))
+        presentDeepl($(this).closest('.mobility'))
       })
     }
 
