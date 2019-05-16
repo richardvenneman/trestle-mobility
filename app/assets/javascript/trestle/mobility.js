@@ -1,9 +1,9 @@
 Trestle.init(function(e, root) {
   function init() {
     $(root).find('.mobility').each(function() {
-      var mobility = new Mobility(this);
-      mobility.initEvents();
-      mobility.chooseLanguage();
+      var instance = new Mobility(this);
+      instance.initEvents();
+      instance.chooseLanguage();
     })
   }
 
