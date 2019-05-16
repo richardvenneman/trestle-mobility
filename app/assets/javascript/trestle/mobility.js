@@ -1,120 +1,114 @@
 Trestle.init(function(e, root) {
   function init() {
     $(root).find('.mobility').each(function() {
-      new Mobility(this);
+      var mobility = new Mobility(this);
+      mobility.initEvents();
+      mobility.chooseLanguage();
     })
   }
 
-  function Mobility (element) {
-    var element = $(element);
-    var activeLocale = element.data('active');
-    var button = element.find('.mobility-active');
-    var inputFields = element.find('.mobility-field');
-    var dropdownItems = element.find('.dropdown-item');
-    var deeplTranslationAction = element.find('.mobility__deepl');
+  var Mobility = function (element) {
+    this.$element = $(element);
+    this.$inputFields = this.$element.find('.mobility-field');
+    this.$dropdownItems = this.$element.find('.dropdown-item');
+    this.$button = this.$element.find('.mobility-active');
+    this.$deeplTranslationAction = this.$element.find('.mobility__deepl');
+    this.activeLocale = this.$element.data('active');
+  };
 
-    function getActiveField () {
-      return element.find('.mobility-field[data-locale="' + activeLocale +'"]');
-    }
+  Mobility.prototype.chooseLanguage = function (flag) {
+    var self = this;
 
-    function getFieldByLocale (locale) {
-      return element.find('.mobility-field[data-locale="' + locale +'"]');
-    }
+    this.$inputFields.each(function() {
+      var field = $(this);
+      var active = field.data('locale') !== self.activeLocale;
+      field.toggleClass('hidden', active)
+    })
 
-    function toggle (flag) {
-      $(inputFields).each(function() {
-        var field = $(this);
-        var active = field.data('locale') !== activeLocale;
-
-        field.toggleClass('hidden', active)
-      })
-
-      $(dropdownItems).each(function() {
-        var field = $(this);
-        var active = field.data('locale') === activeLocale;
-
-        field.toggleClass('active', active)
-      })
-
-      if (flag) {
-        button.text(flag);
-      }
-
-      if (deeplTranslationAction) {
-        presentDeepl(element);
-      }
-    }
-
-    function presentDeepl (element) {
-      var element = $(element);
-
-      if (deeplTranslationAction) {
-        var actionable = !getActiveField().val();
-
-        deeplTranslationAction.toggleClass('mobility__deepl--actionable', actionable)
-
-        if (actionable) {
-          var actions = deeplTranslationAction.find('.dropdown-item');
-
-          actions.each(function() {
-            var item = $(this);
-            item.toggleClass('disabled', item.data('locale') === activeLocale)
-          })
-        }
-      }
-    }
-
-    function dismissDeepl () {
-      deeplTranslationAction.removeClass('mobility__deepl--actionable')
-    }
-
-    function deeplTranslate (locale) {
-      var path = deeplTranslationAction.data('remote-path');
-      var data = {
-        translation: {
-          text: getFieldByLocale(locale).val(),
-          from_locale: locale,
-          to_locale: activeLocale
-        }
-      }
-
-      deeplTranslationAction.addClass('mobility__deepl--active');
-
-      $.post(path, data, function() {
-        deeplTranslationAction.removeClass('mobility__deepl--active');
-      }).done(function(text) {
-        getActiveField().val(text);
-        dismissDeepl();
-      });
-    }
-
-    if (deeplTranslationAction) {
-      inputFields.on('change', function() {
-        presentDeepl($(this).closest('.mobility'))
-      })
-    }
-
-    element.find('.mobility__languages .dropdown-item').on('click', function () {
+    this.$dropdownItems.each(function() {
       var item = $(this);
-      activeLocale = item.data('locale');
+      var active = item.data('locale') === self.activeLocale;
+      item.toggleClass('active', active)
+    })
 
-      toggle(item.text());
+    if (flag) this.$button.text(flag);
+    if (this.$deeplTranslationAction) this.presentDeepl();
+  }
+
+  Mobility.prototype.getActiveField = function () {
+    return this.$element.find('.mobility-field[data-locale="' + this.activeLocale +'"]');
+  }
+
+  Mobility.prototype.getFieldByLocale = function (locale) {
+    return this.$element.find('.mobility-field[data-locale="' + locale +'"]');
+  }
+
+  Mobility.prototype.presentDeepl = function () {
+    var self = this;
+    var actionable = !this.getActiveField().val();
+
+    this.$deeplTranslationAction.toggleClass('mobility__deepl--actionable', actionable)
+
+    if (actionable) {
+      this.$deeplTranslationAction.find('.dropdown-item').each(function() {
+        var item = $(this);
+        item.toggleClass('disabled', item.data('locale') === self.activeLocale)
+      })
+    }
+  }
+
+  Mobility.prototype.dismissDeepl = function () {
+    this.$deeplTranslationAction.removeClass('mobility__deepl--actionable')
+  }
+
+  Mobility.prototype.deeplTranslate = function (fromLocale) {
+    var self = this;
+    var path = this.$deeplTranslationAction.data('remote-path');
+    var data = {
+      translation: {
+        text: this.getFieldByLocale(fromLocale).val(),
+        from_locale: fromLocale,
+        to_locale: this.activeLocale
+      }
+    }
+
+    this.$deeplTranslationAction.addClass('mobility__deepl--active');
+
+    $.post(path, data, function() {
+      self.$deeplTranslationAction.removeClass('mobility__deepl--active');
+    }).done(function(text) {
+      self.getActiveField().val(text);
+      self.dismissDeepl();
+    });
+  }
+
+  Mobility.prototype.initEvents = function () {
+    var self = this;
+
+    this.$element.find('.mobility__languages .dropdown-item').on('click', function () {
+      var $item = $(this);
+      self.activeLocale = $item.data('locale');
+      self.chooseLanguage($item.text());
     });
 
-    element.find('.mobility__deepl-languages .dropdown-item').on('click', function (e) {
-      var item = $(this);
+    this.$element.find('.mobility__deepl-languages .dropdown-item').on('click', function (e) {
+      var $item = $(this);
 
-      if (item.hasClass('disabled')) {
+      if ($item.hasClass('disabled')) {
         e.preventDefault();
         e.stopPropagation();
         return;
       }
 
-      deeplTranslate(item.data('locale'));
+      self.deeplTranslate($item.data('locale'));
     });
 
-    toggle()
-  }
+    if (this.$deeplTranslationAction) {
+      this.$inputFields.on('change', function() {
+        self.presentDeepl()
+      })
+    }
+  };
 
   init();
 });
