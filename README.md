@@ -31,16 +31,6 @@ Trestle.resource(:posts) do
 end
 ```
 
-### DeepL translation
-
-<img src="/screenshot-deepl.png?raw=true" width="410" height="241" alt="Trestle Mobility DeepL integration screenshot" />
-
-Trestle Mobility can automatically populate empty field values with translations from other languages. This functionality is powered by the excellent [deepl-rb](https://github.com/wikiti/deepl-rb) gem. To make use of this, specify your DeepL Pro API key in your Trestle initializer:
-
-```ruby
-config.mobility.deepl_api_key = "YOUR-API-KEY"
-```
-
 ### Specifying locales
 
 By default Trestle Mobility uses `I18n.available_locales` to generate the form fields, but you can specify this on a per-field basis:
@@ -67,6 +57,16 @@ Or specify it per field:
 
 ```ruby
 mobility_text_field :subtitle, selected: "nl"
+```
+
+### DeepL translation
+
+<img src="/screenshot-deepl.png?raw=true" width="410" height="241" alt="Trestle Mobility DeepL integration screenshot" />
+
+Trestle Mobility can automatically populate empty field values with translations from other languages. This functionality is powered by the excellent [deepl-rb](https://github.com/wikiti/deepl-rb) gem. To make use of this, specify your DeepL Pro API key in your Trestle initializer:
+
+```ruby
+config.mobility.deepl_api_key = "YOUR-API-KEY"
 ```
 
 ## Installation
