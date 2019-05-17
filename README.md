@@ -63,7 +63,7 @@ mobility_text_field :subtitle, selected: "nl"
 
 <img src="/screenshot-deepl.png?raw=true" width="410" height="241" alt="Trestle Mobility DeepL integration screenshot" />
 
-Trestle Mobility can automatically populate empty field values with translations from other languages. This functionality is powered by the excellent [deepl-rb](https://github.com/wikiti/deepl-rb) gem. To make use of this, specify your DeepL Pro API key in your Trestle initializer:
+Trestle Mobility can automatically populate empty field values with translations from other languages. This functionality is powered by the excellent [deepl-rb](https://github.com/wikiti/deepl-rb) gem. To make use of this, add `deepl-rb` to your Gemfile and specify your DeepL Pro API key in your Trestle initializer:
 
 ```ruby
 config.mobility.deepl_api_key = "YOUR-API-KEY"
