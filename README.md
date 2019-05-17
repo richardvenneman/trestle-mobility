@@ -7,6 +7,8 @@
 ## Features / problems
 
 - Manage Mobility translations with a space-efficient dropdown interface in Trestle
+- Supports text fields, text area's and check boxes
+- Integrates with [DeepL Pro](https://www.deepl.com/pro.html) to automatically translate fields
 - Developed for usage with Mobility's Postgres container back-end
 - Probably works with other back-ends but has not been tested
 
@@ -55,6 +57,16 @@ Or specify it per field:
 
 ```ruby
 mobility_text_field :subtitle, selected: "nl"
+```
+
+### DeepL translation
+
+<img src="/screenshot-deepl.png?raw=true" width="410" height="241" alt="Trestle Mobility DeepL integration screenshot" />
+
+Trestle Mobility can automatically populate empty field values with translations from other languages. This functionality is powered by the excellent [deepl-rb](https://github.com/wikiti/deepl-rb) gem. To make use of this, specify your DeepL Pro API key in your Trestle initializer:
+
+```ruby
+config.mobility.deepl_api_key = "YOUR-API-KEY"
 ```
 
 ## Installation

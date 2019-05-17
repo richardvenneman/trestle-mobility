@@ -1,0 +1,14 @@
+<div class="mobility__deepl" data-remote-path="<%= trestle.translate_path %>">
+  <small class="mobility__deepl-progress">Translating…</small>
+
+  <div class="btn-group">
+    <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Translate from <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu mobility__deepl-languages">
+      <% locales.each do |locale| %>
+        <li><a href="javascript:void(0)" class="dropdown-item" data-locale="<%= locale %>"><%= "#{EmojiFlag.new(locale)} #{locale.upcase}" %></a></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

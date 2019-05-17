@@ -4,6 +4,7 @@ module Trestle
       include Configurable
 
       option :selected
+      option :deepl_api_key
     end
   end
 end
