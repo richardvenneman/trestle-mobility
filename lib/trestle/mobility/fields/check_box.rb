@@ -5,7 +5,7 @@ module Trestle
         def field
           label = options[:label] || name.to_s.humanize
           locales = options[:locales] || I18n.available_locales.sort
-          selected = options[:selected] || Trestle.config.mobility.selected || locales.first
+          selected = options[:selected] || Trestle.config.mobility.selected.call || locales.first
 
           @template.render partial: "trestle/mobility/check_box",
                            locals: {
