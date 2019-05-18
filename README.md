@@ -14,6 +14,18 @@
 
 <img src="/screenshot.png?raw=true" width="529" height="242" alt="Trestle Mobility screenshot" />
 
+## Getting started
+
+These instructions assume you have a working Trestle application. To integrate trestle-mobility, first add it to your application's Gemfile:
+
+```ruby
+gem 'trestle-mobility'
+```
+
+Run `bundle install`, and then run the install generator to set up configuration options.
+
+    $ rails generate trestle:auth:install
+
 ## Usage
 
 Trestle Mobility requires you to enable [Mobility's `locale_accessors` plugin](https://github.com/shioyama/mobility#getset).
@@ -31,9 +43,13 @@ Trestle.resource(:posts) do
 end
 ```
 
-### Specifying locales
+Trestle Mobility allows you to specify the language that is selected by default:
 
-By default Trestle Mobility uses `I18n.available_locales` to generate the form fields, but you can specify this on a per-field basis:
+```ruby
+mobility_text_field :subtitle, selected: "nl"
+```
+
+By default Trestle Mobility uses `I18n.available_locales` to generate the form fields, but you can specify the languages on a per-field basis:
 
 ```ruby
 mobility_text_field :title, locales: %w(nl de fr)
@@ -43,23 +59,7 @@ Quoting Mobility's README:
 
 > (Note however that Mobility will complain if you have I18n.enforce_available_locales set to true and you try accessing a locale not present in I18n.available_locales; set it to false if you want to allow any locale.)
 
-### Default language selection
-
-Trestle Mobility allows you to specify the language that is selected by default. This is possible on an application-wide basis but also per field.
-
-To set the default language that should be selected for all fields, add the following line to your Trestle initializer:
-
-```ruby
-config.mobility.selected = "nl"
-```
-
-Or specify it per field:
-
-```ruby
-mobility_text_field :subtitle, selected: "nl"
-```
-
-### DeepL translation
+## DeepL translation
 
 <img src="/screenshot-deepl.png?raw=true" width="410" height="241" alt="Trestle Mobility DeepL integration screenshot" />
 
@@ -68,13 +68,3 @@ Trestle Mobility can automatically populate empty field values with translations
 ```ruby
 config.mobility.deepl_api_key = "YOUR-API-KEY"
 ```
-
-## Installation
-
-These instructions assume you have a working Trestle application. To integrate trestle-mobility, first add it to your application's Gemfile:
-
-```ruby
-gem 'trestle-mobility'
-```
-
-Run `bundle install`, and then restart your Rails server.
