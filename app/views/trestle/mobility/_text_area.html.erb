@@ -9,16 +9,10 @@
       <% end %>
     </ul>
     <% locales.each do |locale, index| %>
-      <%
-        value = instance.public_send(field_name)
-        value = value.try(:to_json) if options[:json]
-      %>
-
       <%=
         form.raw_text_area(
           "#{field_name}_#{locale}",
           options.merge(
-            value: value,
             class: "form-control mobility-field#{locale == selected ? '' : ' hidden'}",
             placeholder: "#{label} (#{locale.upcase})",
             data: { locale: locale }
