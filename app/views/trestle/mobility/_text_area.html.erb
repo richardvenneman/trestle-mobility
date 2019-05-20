@@ -28,6 +28,13 @@
     <% end %>
   </div>
 
-  <%= render(partial: "trestle/mobility/deepl_translation_action",
-             locals: { locales: locales }) if Trestle.config.mobility.deepl_api_key %>
+  <%=
+    render(
+      partial: "trestle/mobility/deepl_translation_action",
+      locals: {
+        locales: locales,
+        deepl_query_params: deepl_query_params.to_json
+      }
+    ) if Trestle.config.mobility.deepl_api_key
+  %>
 </div>

@@ -12,8 +12,8 @@ module Trestle::Mobility::Translators
       configure_api_key!
     end
 
-    def translate(text, from, to)
-      DeepL.translate(text, from, to)
+    def translate(text, from, to, query_params = {})
+      DeepL.translate(text, from, to, query_params)
     end
 
     private

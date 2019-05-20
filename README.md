@@ -68,3 +68,9 @@ Trestle Mobility can automatically populate empty field values with translations
 ```ruby
 config.mobility.deepl_api_key = "YOUR-API-KEY"
 ```
+
+It is possible to pass any DeepL API options to the field (check out the [deepl-rb documentation](https://github.com/wikiti/deepl-rb#translate) section on params):
+
+```ruby
+mobility_text_area :content, rows: 14, deepl_query_params: { tag_handling: "xml" }
+```

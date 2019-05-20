@@ -64,11 +64,13 @@ Trestle.init(function(e, root) {
   Mobility.prototype.deeplTranslate = function (fromLocale) {
     var self = this;
     var path = this.$deeplTranslationAction.data('remote-path');
+    var queryParams = this.$deeplTranslationAction.data('deepl-query-params');
     var data = {
       translation: {
         text: this.getFieldByLocale(fromLocale).val(),
         from_locale: fromLocale,
-        to_locale: this.activeLocale
+        to_locale: this.activeLocale,
+        query_params: queryParams
       }
     }
 
