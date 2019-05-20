@@ -11,7 +11,16 @@
       </ul>
     </div>
     <% locales.each do |locale| %>
-      <%= form.raw_text_field "#{field_name}_#{locale}", class: "form-control mobility-field#{locale == selected ? '' : ' hidden'}", placeholder: "#{label} (#{locale.upcase})", data: { locale: locale } %>
+      <%=
+        form.raw_text_field(
+          "#{field_name}_#{locale}",
+          options.merge(
+            class: "form-control mobility-field#{locale == selected ? '' : ' hidden'}",
+            placeholder: "#{label} (#{locale.upcase})",
+            data: { locale: locale }
+          )
+        )
+      %>
     <% end %>
   </div>
 

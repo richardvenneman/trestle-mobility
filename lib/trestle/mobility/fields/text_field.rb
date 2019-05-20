@@ -9,6 +9,7 @@ module Trestle
 
           @template.render partial: "trestle/mobility/text_field",
                            locals: {
+                             options: options,
                              field_name: name,
                              label: label,
                              locales: locales,
