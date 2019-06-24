@@ -24,7 +24,7 @@ gem 'trestle-mobility'
 
 Run `bundle install`, and then run the install generator to set up configuration options.
 
-    $ rails generate trestle:auth:install
+    $ rails generate trestle:mobility:install
 
 ## Usage
 
