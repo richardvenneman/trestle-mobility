@@ -10,7 +10,7 @@
     </ul>
     <% locales.each do |locale, index| %>
       <%=
-        form.raw_text_area(
+        builder.raw_text_area(
           "#{field_name}_#{locale}",
           options.merge(
             class: "form-control mobility-field#{locale == selected ? '' : ' hidden'}",

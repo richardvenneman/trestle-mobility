@@ -9,6 +9,7 @@ module Trestle
 
           @template.render partial: "trestle/mobility/check_box",
                            locals: {
+                             builder: builder,
                              field_name: name,
                              label: label,
                              locales: locales,
