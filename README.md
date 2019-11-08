@@ -9,8 +9,6 @@
 - Manage Mobility translations with a space-efficient dropdown interface in Trestle
 - Supports text fields, text area's and check boxes
 - Integrates with [DeepL Pro](https://www.deepl.com/pro.html) to automatically translate fields
-- Developed for usage with Mobility's Postgres container back-end
-- Probably works with other back-ends but has not been tested
 
 <img src="/screenshot.png?raw=true" width="529" height="242" alt="Trestle Mobility screenshot" />
 
