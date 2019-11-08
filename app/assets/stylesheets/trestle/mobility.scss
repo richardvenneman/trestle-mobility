@@ -36,20 +36,13 @@
   border-bottom-right-radius: .25rem;
 }
 
-.mobility__deepl-progress {
-  display: none;
-  margin-right: 4px;
-}
-
 .mobility__deepl {
   display: none;
   margin-top: 4px;
   text-align: right;
 
-  .progress {
-    display: inline-block;
-    width: 97px;
-    margin-right: 4px;
+  .spinner-border {
+    display: none;
   }
 
   &--actionable {
@@ -57,7 +50,7 @@
   }
 
   &--active {
-    .mobility__deepl-progress {
+    .spinner-border {
       display: inline-block;
     }
   }
