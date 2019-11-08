@@ -10,7 +10,7 @@
         <% end %>
       </div>
     </div>
-    <% locales.each do |locale, index| %>
+    <% locales.each do |locale| %>
       <%=
         builder.raw_text_area(
           "#{field_name}_#{locale}",
