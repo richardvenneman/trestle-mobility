@@ -1,19 +1,21 @@
 <div class="form-group mobility" data-active="<%= selected %>">
   <div class="input-group">
-    <button type="button" class="btn btn-default dropdown-toggle input-group-addon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span class="mobility-active"><%= "#{EmojiFlag.new(selected)} #{selected.upcase}" %></span> <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu mobility__languages">
-      <% locales.each do |locale| %>
-        <li><a href="#<%= "#{field_name}_#{locale}" %>" class="dropdown-item" data-locale="<%= locale %>"><%= "#{EmojiFlag.new(locale)} #{locale.upcase}" %></a></li>
-      <% end %>
-    </ul>
+    <div class="input-group-prepend">
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="mobility-active"><%= "#{EmojiFlag.new(selected)} #{selected.upcase}" %></span> <span class="caret"></span>
+      </button>
+      <div class="dropdown-menu mobility__languages">
+        <% locales.each do |locale| %>
+          <a href="#<%= "#{field_name}_#{locale}" %>" class="dropdown-item" data-locale="<%= locale %>"><%= "#{EmojiFlag.new(locale)} #{locale.upcase}" %></a>
+        <% end %>
+      </div>
+    </div>
     <% locales.each do |locale, index| %>
       <%=
         builder.raw_text_area(
           "#{field_name}_#{locale}",
           options.merge(
-            class: "form-control mobility-field#{locale == selected ? '' : ' hidden'}",
+            class: "form-control mobility-field#{locale == selected ? '' : ' mobility-field--hidden'}",
             placeholder: "#{label} (#{locale.upcase})",
             data: { locale: locale }
           )

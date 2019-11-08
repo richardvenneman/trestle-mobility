@@ -1,21 +1,21 @@
 <div class="form-group mobility" data-active="<%= selected %>">
   <div class="input-group">
-    <div class="input-group-btn">
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div class="input-group-prepend">
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="mobility-active"><%= "#{EmojiFlag.new(selected)} #{selected.upcase}" %></span> <span class="caret"></span>
       </button>
-      <ul class="dropdown-menu mobility__languages">
+      <div class="dropdown-menu mobility__languages">
         <% locales.each do |locale| %>
-          <li><a href="#<%= "#{field_name}_#{locale}" %>" class="dropdown-item" data-locale="<%= locale %>"><%= "#{EmojiFlag.new(locale)} #{locale.upcase}" %></a></li>
+          <a href="#<%= "#{field_name}_#{locale}" %>" class="dropdown-item" data-locale="<%= locale %>"><%= "#{EmojiFlag.new(locale)} #{locale.upcase}" %></a>
         <% end %>
-      </ul>
+      </div>
     </div>
     <% locales.each do |locale| %>
       <%=
         builder.raw_text_field(
           "#{field_name}_#{locale}",
           options.merge(
-            class: "form-control mobility-field#{locale == selected ? '' : ' hidden'}",
+            class: "form-control mobility-field#{locale == selected ? '' : ' mobility-field--hidden'}",
             placeholder: "#{label} (#{locale.upcase})",
             data: { locale: locale }
           )

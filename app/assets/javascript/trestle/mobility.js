@@ -22,7 +22,7 @@ Trestle.init(function(e, root) {
     this.$inputFields.each(function() {
       var field = $(this);
       var active = field.data('locale') !== self.activeLocale;
-      field.toggleClass('hidden', active)
+      field.toggleClass('mobility-field--hidden', active)
     })
 
     this.$dropdownItems.each(function() {

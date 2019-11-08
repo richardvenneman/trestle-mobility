@@ -1,20 +1,20 @@
 <div class="form-group mobility" data-active="<%= selected %>">
   <div class="input-group">
-    <div class="input-group-btn">
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div class="input-group-prepend">
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="mobility-active"><%= "#{EmojiFlag.new(selected)} #{selected.upcase}" %></span> <span class="caret"></span>
       </button>
-      <ul class="dropdown-menu mobility__languages">
+      <div class="dropdown-menu mobility__languages">
         <% locales.each do |locale| %>
-          <li><a href="#<%= "#{field_name}_#{locale}" %>" class="dropdown-item" data-locale="<%= locale %>"><%= "#{EmojiFlag.new(locale)} #{locale.upcase}" %></a></li>
+          <a href="#<%= "#{field_name}_#{locale}" %>" class="dropdown-item" data-locale="<%= locale %>"><%= "#{EmojiFlag.new(locale)} #{locale.upcase}" %></a>
         <% end %>
-      </ul>
+      </div>
     </div>
     <% locales.each do |locale| %>
       <%=
-        content_tag(:div, "#{field_name.to_s.humanize} (#{locale.upcase})", { class: "form-control mobility-checkbox mobility-field#{locale == selected ? '' : ' hidden'}", data: { locale: locale } }) do
-          builder.raw_check_box("#{field_name}_#{locale}", { class: "mobility-checkbox__input" }, "1", "0") +
-          builder.label("#{field_name}_#{locale}", "#{label} (#{locale.upcase})", class: "mobility-checkbox__label")
+        content_tag(:div, "#{field_name.to_s.humanize} (#{locale.upcase})", { class: "form-check form-check-inline mobility-checkbox mobility-field#{locale == selected ? '' : ' mobility-field--hidden'}", data: { locale: locale } }) do
+          builder.raw_check_box("#{field_name}_#{locale}", { class: "form-check-input mobility-checkbox__input" }, "1", "0") +
+          builder.label("#{field_name}_#{locale}", "#{label} (#{locale.upcase})", class: "form-check-label mobility-checkbox__label")
         end
       %>
     <% end %>
