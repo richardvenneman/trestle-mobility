@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2019-11-08
+### Added
+- Support for Bootstrap 4 (that comes with Trestle 0.9.0)
+
 ## [1.2.0] - 2019-08-14
 ### Added
 - Start documenting changes
